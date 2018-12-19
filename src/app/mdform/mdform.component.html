@@ -1,0 +1,38 @@
+<div class="container" >
+  <form [formGroup]="form">
+    <label>Código:</label>
+    <input type="text" formControlName="codigo">
+    <!-- <p *ngIf="form.controls.codigo.touched &&
+              form.controls.codigo.errors">
+    Campo obrigatório!
+    </p> -->
+    <fieldset formGroupName="dados">
+      <label>Título:</label>
+      <input type="text" formControlName="titulo">
+      <label>Descrição:</label>
+      <input type="text" formControlName="descricao">
+      <p *ngIf="form.controls.dados.controls.descricao.touched &&
+                form.controls.dados.controls.descricao.errors">
+              Campo obrigatório!
+      </p>
+    </fieldset>
+    <button (click)="onSubmit()" [disabled]="!form.valid" >Submit</button>
+    <button (click)="onReset()" >Reset</button>
+  </form>
+  <div>Value: {{form.value | json }}</div>
+  <div> Valid: {{form.valid }} </div>
+  <div> Errors campo codigo: {{form
+      .controls['codigo']
+      .errors | json }} 
+  </div>
+  <div> Errors campo titulo: {{form
+            .controls['dados']
+            .controls['titulo']
+            .errors | json }} 
+  </div>
+  <div> Errors campo descicao: {{form
+      .controls['dados']
+      .controls['descricao']
+      .errors | json }} 
+</div>  
+</div>

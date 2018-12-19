@@ -1,0 +1,24 @@
+<div class="container" >
+  <div class="form-group" [hidden]="erroMsg === ''">
+    <br/>
+    <div class="alert" role="alert" [hidden]="erroMsg === ''" [class.alert-warning]="erroMsg !== ''">
+        {{erroMsg}}
+    </div>
+  </div>
+  
+  <div class="dropdown" [hidden]="autenticado === false"  >
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item" type="button">Action</button>
+        <button class="dropdown-item" type="button">Another action</button>
+        <button class="dropdown-item" type="button">Something else here</button>
+        <button class="dropdown-item" type="button" (click)="logout()" >Logout</button>
+      </div>
+  </div>
+
+  <div >
+    <app-login userLabel="Usuário" passwordLabel="Senha" (valida)="onValida($event)" ></app-login>
+  </div>
+</div>

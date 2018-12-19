@@ -1,0 +1,33 @@
+<div class="container" >
+  <h3>Banco</h3>
+  <div class="form-group">
+    <label for="saldo">Saldo</label>
+    <input id="saldo" class="form-control" type="text" ngModel #saldo required name="nmSaldo"/>
+<!--      <div class="alert" role="alert" [hidden]="erroBranco === ''" [class.alert-warning]="erroBranco !== ''">
+      {{erroBranco}}
+    </div> -->
+  </div>
+  <div class="form-group">
+    <label for="valor">Valor da Operação</label>
+    <input id="valor" class="form-control" type="text" ngModel #valor required name="nmValor" />
+<!--      <div class="alert" role="alert" [hidden]="erroNulo === ''" [class.alert-warning]="erroNulo !== ''">
+      {{erroNulo}}
+    </div> -->
+  </div>
+  <div class="form-group">
+    <label for="operacao">Valor da Operação</label>
+    <select class="form-control" #operacao ngModel>
+      <option value=""></option>
+      <option value="1">Depósito</option>
+      <option value="2">Saque</option>
+    </select>
+  </div>
+  <button class="btn btn-primary" (click)="executar(saldo.value,valor.value,operacao.value)" type="button" >Executar</button>
+  <br><br>
+  <div class="alert" role="alert" [hidden]="saldoNegativo === ''" [class.alert-warning]="saldoNegativo !== ''">
+      {{saldoNegativo}}
+  </div> 
+  <div class="alert" role="alert" [hidden]="saldoSucesso === ''" [class.alert-success]="saldoSucesso !== ''">
+      {{saldoSucesso}}
+  </div> 
+</div>

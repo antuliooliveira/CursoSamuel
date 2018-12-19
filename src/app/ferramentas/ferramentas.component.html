@@ -1,0 +1,13 @@
+<div class="form-group">
+  <label for="operacao">Modo</label>
+  <select class="form-control" #view ngModel>
+    <option value="" ></option>
+    <option value="1" >Padrão</option>
+    <option value="2">Científica</option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="result">Resultado:</label>
+  <input id="result" type="text" [(ngModel)]="resultado" readonly/>
+</div>   
+<app-calculadora [modo]="view.value" (mudou)="onMudou($event)" ></app-calculadora>

@@ -1,0 +1,27 @@
+
+
+<div class="container" >
+<h3>Exercício 1</h3>
+<form>
+    <div class="form-group">
+      <label for="celsius">Grau Celsius</label>
+      <input id="celsius" class="form-control" type="text" ngModel #celsius required placeholder="Digite o valor em Farenheit" />
+    </div>
+
+    <button class="btn btn-primary" (click)="converter(celsius.value)"  type="button" >Converter</button>
+    &nbsp;
+     <button class="btn btn-secondary" (click)="limpar(); celsius.value = ''"  type="button" >Limpar</button>
+    <div class="form-group" [hidden]="resultado === ''">
+      <br/>
+      <div class="alert" role="alert" [hidden]="resultado === ''" [class.alert-success]="resultado !== ''">
+        {{resultado}}
+      </div>
+    </div>
+    <div class="form-group" [hidden]="erro === ''">
+        <br/>
+        <div class="alert" role="alert" [hidden]="erro === ''" [class.alert-warning]="erro !== ''">
+          {{erro}}
+        </div>
+      </div>          
+  </form>
+</div>

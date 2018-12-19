@@ -1,0 +1,82 @@
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div class="card">
+            <div class="card-header">
+                Pedido
+            </div>
+            <div class="card-body">                
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="prod" >Produto</label>
+                            <select class="form-control" id="prod" name="idxProduto" ngModel >
+                                <option [value]="null">Selecione</option>
+                                <option *ngFor="let p of produtos, let i = index" [value]="i">{{p.nome}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="fPag">Forma Pagamento</label>
+                            <select class="form-control" id="fPag" name="idxForma" ngModel>
+                                <option *ngFor="let fp of formaPagamentos, let j = index" [value]="j">{{fp.nome}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="qtde">Quantidade</label>
+                            <input id="qtde" class="form-control" type="text" name="quantidade" ngModel required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                    <button type="submit"  class="btn btn-primary" >Incluir</button>
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-margin-bottom-0" *ngIf="pedidos.length > 0" >
+        <thead>
+            <tr>
+            <td align='left'><b>Produto</b></td>
+            <td align='right'><b>Valor Unit.</b></td>
+            <td align='center'><b>Quantidade</b></td>
+            <td align='center'><b>Forma de Pagamento</b></td>
+            <td align='right'><b>Total</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pedido of listarPedidos">
+                <td>
+                {{ pedido.produto.nome }}
+                </td>
+                <td align='right'>
+                    {{ pedido.valorFormatado | currency:'BRL'}}
+                </td>            
+                <td align='center'>
+                    {{ pedido.quantidade }}
+                </td> 
+                <td align='center'>
+                    {{ pedido.formaPagamento.nome }} ( {{pedido.formaPagamento.desconto}} )
+                </td> 
+                <td align='right'>
+                    {{ pedido.totalFormatado | currency:'BRL'}}
+                </td>             
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+            <td colspan="4" >
+                Total
+            </td>  
+            <td align='right'>
+                {{totalGeral() | currency:'BRL' }}
+            </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+{{form.value|json}}

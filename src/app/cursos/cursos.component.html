@@ -1,0 +1,18 @@
+<div class="container" >
+  <h5>Lista de Cursos</h5>
+  <ul>
+    <li *ngFor="let curso of cursos">
+      {{ curso.id }} - {{ curso.descricao }}
+    </li>
+  </ul>
+
+  <!-- <h3 *ngIf="!cursosDescricao" > Carregando Descrições....</h3>   -->
+
+  <!-- <h5 *ngIf="cursosDescricao" >Lista de Cursos por Descricao</h5>
+  <ul>
+    <li *ngFor="let desc of cursosDescricao">
+      {{ desc }}
+    </li>
+  </ul> -->
+  
+</div>

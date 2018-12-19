@@ -1,0 +1,37 @@
+<h3>Eleição</h3>
+<div class="form-group">
+  <label for="branco">Brancos</label>
+  <input id="branco" class="form-control" type="text" ngModel #branco required name="nmBranco"/>
+  <div class="alert" role="alert" [hidden]="erroBranco === ''" [class.alert-warning]="erroBranco !== ''">
+    {{erroBranco}}
+  </div>
+</div>
+<div class="form-group">
+  <label for="nulo">Nulos</label>
+  <input id="nulo" class="form-control" type="text" ngModel #nulo required name="nmNulo" />
+  <div class="alert" role="alert" [hidden]="erroNulo === ''" [class.alert-warning]="erroNulo !== ''">
+    {{erroNulo}}
+  </div>          
+</div>
+<div class="form-group">
+  <label for="valido">Válidos</label>
+  <input id="valido" class="form-control" type="text" ngModel #valido required name="nmValido"/>
+  <div class="alert" role="alert" [hidden]="erroValido === ''" [class.alert-warning]="erroValido !== ''">
+    {{erroValido}}
+  </div>          
+</div>
+
+<button class="btn btn-primary" (click)="calcular(branco.value, nulo.value, valido.value)"  type="button" >Resultado</button>
+
+<br/><br/>
+<div class="form-group">
+  <div class="alert" role="alert" [hidden]="exibe === ''" [class.alert-success]="exibe !== ''">
+    Calculado com Sucesso
+  </div>          
+</div>    
+<div class="form-group" [hidden]="exibe === ''">
+    Percentual de Votos Brancos: {{perBrancoStr}}<br/>
+    Percentual de Votos Nulo: {{perNuloStr}}<br/>
+    Percentual de Votos Válidos: {{perValidoStr}}
+</div>
+

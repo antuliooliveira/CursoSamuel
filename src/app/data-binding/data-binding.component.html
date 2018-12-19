@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="row">
+      <div class="col-sm-3">
+        <div class="card" style="width: 18rem; height: 377px">
+          <div class="card-body">
+            <h3>Property Binding</h3>
+            <p>Nome: {{ nome }}</p>
+            <p [hidden]="ocultarUrl">Url: {{ getUrl() }}</p>
+            <input type="text" ngModel #entrada1 />{{entrada1.value}}
+          </div>
+        </div>      
+      </div>
+      <div class="col-sm-3">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h3>NgModel e Variáveis de Template </h3>
+            <input type="text" ngModel #entrada2="ngModel" required >
+            <p>Valor: {{ entrada2.value }}</p>
+            <p>Visitado: {{ entrada2.touched }}</p>
+            <p>Modificado: {{ entrada2.dirty }}</p>
+            <p>Valido: {{ entrada2.valid }}</p>
+            <button class="btn btn-primary" type="button" [disabled]="!entrada2.valid" >Submit</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="card" style="width: 18rem; height: 377px">
+          <h3>Classe Binding </h3>
+          <label>Selecione uma opção:</label>
+          <select #selecao ngModel>
+            <option value=""></option>
+            <option value="success">Sucesso</option>
+            <option value="info">Info</option>
+            <option value="secondary">Secondary</option>
+            <option value="danger">Danger</option>
+          </select>
+          <div class="alert" role="alert"
+            [hidden]="selecao.value !== 'success'"
+            [class.alert-success]="selecao.value === 'success'">
+            Mensagem de sucesso
+          </div>
+          <div class="alert" role="alert"
+            [hidden]="selecao.value !== 'info'"
+            [class.alert-info]="selecao.value === 'info'">
+            Mensagem informativa
+          </div>
+          <div class="alert" role="alert"
+            [hidden]="selecao.value !== 'secondary'"
+            [class.alert-secondary]="selecao.value === 'secondary'">
+            Mensagem Secundaria
+          </div>
+          <div [style.display]="selecao.value === 'danger' ? 'block' : 'none'" class="alert alert-danger" role="alert">
+            Esse texto só aparece em caso de erro!
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="card" style="width: 18rem; height: 377px">
+          <h3>Event Binding Ex.:1</h3>
+          <button class="btn btn-primary" type="button" (click)="onClick()" >Clique Aqui</button>
+        </div>
+      </div>    
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card" style="width: 18rem; height: 183px">
+          <h3>Event Binding Ex.:2</h3>
+          <input type="text" ngModel #fone />
+          <p>Telefone: {{ fone.value }}</p>
+          <button (click)="onClick2(fone.value)">Chamar</button>
+          <p>{{ mensagem }}</p>
+      </div>  
+    </div>
+    <div class="col-sm-3">
+      <div class="card" style="width: 18rem; height: 183px;">
+        <h3>Event Binding Ex.:3</h3>
+        <input type="text"
+          (keyup)="onKeyup($event)"
+          (keyup.enter)="onSave(input.value)"
+          (blur)="onSave(input.value)"
+          #input >
+        <div>Conteúdo Atual: {{conteudoAtual}}</div>
+        <div>Conteúdo Salvo: {{conteudoSalvo}}</div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card" style="width: 18rem; height: 183px;">
+        <h3>Event Binding Ex.:4</h3>
+        <span
+        (mouseover)="onToggleHover()"
+        (mouseout)="onToggleHover()"
+        [class.highlight]="isMouseOver">
+        Passe o mouse sobre o texto!
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
